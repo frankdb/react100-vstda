@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import NewToDo from './NewToDo.jsx';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      todos: []
+    }
+    this.handleAddToDo = this.handleAddToDo.bind(this);
+  }
+
+  handleAddToDo(todo, priority) {
+
+  }
 
   render() {
     return (
@@ -10,7 +22,7 @@ class App extends Component {
 
         <div className="row">
           <div className="col-md-4">
-            Hello
+            <NewToDo />
           </div>
 
           <div className="col-md-8">

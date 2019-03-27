@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "bluebird": "^3.5.0",
+    "bootstrap": "^4.3.1",
     "chai": "^3.5.0",
     "expect": "^1.20.2",
     "express": "^4.16.3",
@@ -23,6 +24,7 @@
     "nightmare": "^3.0.1",
     "nightmare-react-utils": "^1.0.4",
     "react": "^15.3.2",
+    "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^15.3.2",
     "serve-favicon": "^2.5.0",
     "webpack": "^3.6.0"
