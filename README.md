@@ -1,6 +1,6 @@
-# React 100 San Diego Top Spots
+# React 100 VSTDA
 
-This project is a simple React app that lists the top spots in San Diego through accessing an API. You visit the URL at: https://react100-san-diego-top-spots-apfyk6bnf.now.sh
+This project is a simple React app that . You visit the URL at: 
 
 ## Getting Started
 
