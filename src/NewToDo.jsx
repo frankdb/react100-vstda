@@ -25,12 +25,12 @@ class NewToDo extends React.Component {
 
         <div className="form-group">
           <label htmlFor="todo">I want to..</label>
-          <textarea name="todo" value={this.state.todo} onChange={this.handleChange}></textarea>
+          <textarea className="create-todo-text" name="todo" value={this.state.todo} onChange={this.handleChange}></textarea>
         </div>
 
         <div className="form-group">
           <label htmlFor="priority">How much of a priority is this?</label>
-          <select name="priority" className="form-control" value={this.state.priority} onChange={this.handleChange}>
+          <select name="priority" className="form-control create-todo-priority" value={this.state.priority} onChange={this.handleChange}>
             <option value="select" disabled>Select a Priority</option>
             <option value="1">1</option>
             <option value="2">2</option>
