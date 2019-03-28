@@ -5,7 +5,16 @@ class NewToDo extends React.Component {
     super(props);
     this.state = {
       todo: '',
-      priority: null,
+      priority: 'select',
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    if (e.target.name === "todo") {
+      this.setState({ todo: e.target.value });
+    } else if (e.target.name === "priority") {
+      this.setState({ priority: e.target.value });
     }
   }
 
@@ -16,20 +25,20 @@ class NewToDo extends React.Component {
 
         <div className="form-group">
           <label htmlFor="todo">I want to..</label>
-          <textarea name="todo"></textarea>
+          <textarea name="todo" value={this.state.todo} onChange={this.handleChange}></textarea>
         </div>
 
         <div className="form-group">
           <label htmlFor="priority">How much of a priority is this?</label>
-          <select name="priority" className="form-control">
-            <option value="select" selected disabled>Select a Priority</option>
+          <select name="priority" className="form-control" value={this.state.priority} onChange={this.handleChange}>
+            <option value="select" disabled>Select a Priority</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
         </div>
 
-        <button className="btn btn-success btn-block" onClick={() => props.handleAddToDo()}>Add</button>
+        <button className="btn btn-success btn-block" onClick={() => this.props.addToDo(this.state.todo, this.state.priority)}>Add</button>
       </div>
     )
   }
