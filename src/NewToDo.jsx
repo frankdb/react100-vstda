@@ -38,7 +38,7 @@ class NewToDo extends React.Component {
           </select>
         </div>
 
-        <button className="btn btn-success btn-block" onClick={() => this.props.addToDo(this.state.todo, this.state.priority)}>Add</button>
+        <button className="btn btn-success btn-block create-todo" onClick={() => this.props.addToDo(this.state.todo, this.state.priority)}>Add</button>
       </div>
     )
   }

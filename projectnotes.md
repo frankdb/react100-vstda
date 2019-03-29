@@ -12,8 +12,10 @@
   -Functional component
   -Holds to do items
 
-    1. ToDo component
+    1. ToDoItem component
     -Functional component
     -Gets To do information as props from ViewToDo and App
     -On click, to do item expands to reveal update
     -Has buttons for removing and editing item
+    -Functions:
+      -

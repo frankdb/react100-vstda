@@ -9,7 +9,7 @@ const ViewToDo = props => {
         {
           props.todos.map(item => {
             return (
-              <ToDoItem key={item.id} todo={item.todo} priority={item.priority} id={item.id} handleRemove={props.handleRemove} completed={item.completed} toggleCheckBox={props.toggleCheckBox} />
+              <ToDoItem key={item.id} todo={item.todo} priority={item.priority} id={item.id} handleRemove={props.handleRemove} completed={item.completed} toggleCheckBox={props.toggleCheckBox} handleEdit={props.handleEdit} editEnabled={item.editEnabled} handleSave={props.handleSave} />
             )
           })
         }

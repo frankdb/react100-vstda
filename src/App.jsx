@@ -37,6 +37,8 @@ class App extends Component {
     this.addToDo = this.addToDo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.toggleCheckBox = this.toggleCheckBox.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   addToDo(todo, priority) {
@@ -58,11 +60,33 @@ class App extends Component {
   }
 
   toggleCheckBox(id) {
-    console.log('id', id);
     let copy = this.state.todos;
     for (let i = 0; i < copy.length; i++) {
       if (copy[i].id == id) {
         copy[i].completed = !copy[i].completed;
+      }
+    }
+    this.setState({ todos: copy });
+  }
+
+  handleEdit(id) {
+    console.log('clicked')
+    let copy = this.state.todos;
+    for (let i = 0; i < copy.length; i++) {
+      if (copy[i].id == id) {
+        copy[i].editEnabled = !copy[i].editEnabled;
+      }
+    }
+    this.setState({ todos: copy });
+  }
+
+  handleSave(todo, priority, id) {
+    let copy = this.state.todos;
+    for (let i = 0; i < copy.length; i++) {
+      if (copy[i].id == id) {
+        copy[i].todo = todo;
+        copy[i].priority = priority;
+        copy[i].editEnabled = false;
       }
     }
     this.setState({ todos: copy });
@@ -80,7 +104,7 @@ class App extends Component {
           </div>
 
           <div className="col-md-8">
-            <ViewToDo todos={this.state.todos} handleRemove={this.handleRemove} toggleCheckBox={this.toggleCheckBox} />
+            <ViewToDo todos={this.state.todos} handleRemove={this.handleRemove} toggleCheckBox={this.toggleCheckBox} handleEdit={this.handleEdit} handleSave={this.handleSave} />
           </div>
 
 
