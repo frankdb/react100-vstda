@@ -1,5 +1,4 @@
-import React from 'react';
-import EditForm from './EditForm.jsx';
+import React, { Component } from 'react';
 
 function determinesToDoItemColor(priority) {
   if (priority == 1) {
@@ -27,48 +26,62 @@ function handleEditFormDisplay(editEnabled) {
   }
 }
 
-const ToDoItem = props => {
-  return (
-    <div>
-      <li className={`list-group-item ${determinesToDoItemColor(props.priority)}`} style={{ display: handleToDoDisplay(props.editEnabled) }}>
-        <input type="checkbox" checked={props.completed} onChange={() => props.toggleCheckBox(props.id)}></input>
-        {props.todo}
+class ToDoItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todo: this.props.todo,
+      priority: this.props.priority
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-        <div className="pull-right">
-          <a className="edit-todo" style={{ cursor: 'pointer' }}>
-            <i className="fas fa-edit" style={{ color: 'LightBlue' }} onClick={() => props.handleEdit(props.id)}></i>
-          </a>&nbsp;&nbsp;
+  handleChange(e) {
+    if (e.target.name === "description") {
+      this.setState({ todo: e.target.value });
+    } else if (e.target.name === "priority") {
+      this.setState({ priority: e.target.value });
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <li className={`list-group-item ${determinesToDoItemColor(this.props.priority)}`} style={{ display: handleToDoDisplay(this.props.editEnabled) }}>
+          <input type="checkbox" checked={this.props.completed} onChange={() => this.props.toggleCheckBox(this.props.id)}></input>
+          {this.props.todo}
+
+          <div className="pull-right">
+            <a className="edit-todo" style={{ cursor: 'pointer' }}>
+              <i className="fas fa-edit" style={{ color: 'LightBlue' }} onClick={() => this.props.handleEdit(this.props.id)}></i>
+            </a>&nbsp;&nbsp;
         <a className="delete-todo" style={{ cursor: 'pointer' }}>
-            <i className="fas fa-trash-alt" style={{ color: '#951717' }} onClick={() => props.handleRemove(props.id)}></i>
-          </a>
-        </div>
-      </li >
+              <i className="fas fa-trash-alt" style={{ color: '#951717' }} onClick={() => this.props.handleRemove(this.props.id)}></i>
+            </a>
+          </div>
+        </li >
 
-      <li className={`list-group-item ${determinesToDoItemColor(props.priority)}`} style={{ display: handleEditFormDisplay(props.editEnabled) }}>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea className="create-todo-text" name="description" value={props.todo}></textarea>
-        </div>
+        <li className={`list-group-item ${determinesToDoItemColor(this.props.priority)}`} style={{ display: handleEditFormDisplay(this.props.editEnabled) }}>
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <textarea className="create-todo-text" name="description" value={this.state.todo} onChange={this.handleChange}></textarea>
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="priority">Priority</label>
-          <select name="priority" className="form-control">
-            <option value="select" disabled>Select a Priority</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
+          <div className="form-group">
+            <label htmlFor="priority">Priority</label>
+            <select name="priority" className="form-control" value={this.state.priority} onChange={this.handleChange}>
+              <option value="select" disabled>Select a Priority</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
 
-        <button className="btn btn-success" onClick={() => handleSave(props.todo, props.priority, props.id)}>Save</button>
-      </li >
-
-
-    </div>
-
-
-
-  )
+          <button className="btn btn-success" onClick={() => this.props.handleSave(this.state.todo, this.state.priority, this.props.id)}>Save</button>
+        </li >
+      </div >
+    )
+  }
 }
 
 export default ToDoItem;

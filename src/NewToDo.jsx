@@ -32,9 +32,9 @@ class NewToDo extends React.Component {
           <label htmlFor="priority">How much of a priority is this?</label>
           <select name="priority" className="form-control create-todo-priority" value={this.state.priority} onChange={this.handleChange}>
             <option value="select" disabled>Select a Priority</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1">Low priority - 1</option>
+            <option value="2">Medium priority - 2</option>
+            <option value="3">High priority - 3</option>
           </select>
         </div>
 
