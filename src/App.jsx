@@ -32,7 +32,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos: mock
+      todos: []
     }
     this.addToDo = this.addToDo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);

@@ -52,24 +52,24 @@ class ToDoItem extends Component {
           {this.props.todo}
 
           <div className="pull-right">
-            <a className="edit-todo" style={{ cursor: 'pointer' }}>
-              <i className="fas fa-edit" style={{ color: 'LightBlue' }} onClick={() => this.props.handleEdit(this.props.id)}></i>
+            <a className="edit-todo" style={{ cursor: 'pointer' }} onClick={() => this.props.handleEdit(this.props.id)}>
+              <i className="fas fa-edit" style={{ color: 'LightBlue' }} ></i>
             </a>&nbsp;&nbsp;
-        <a className="delete-todo" style={{ cursor: 'pointer' }}>
-              <i className="fas fa-trash-alt" style={{ color: '#951717' }} onClick={() => this.props.handleRemove(this.props.id)}></i>
+        <a className="delete-todo" style={{ cursor: 'pointer' }} onClick={() => this.props.handleRemove(this.props.id)}>
+              <i className="fas fa-trash-alt" style={{ color: '#951717' }}></i>
             </a>
           </div>
         </li >
 
-        <li className={`list-group-item ${determinesToDoItemColor(this.props.priority)}`} style={{ display: handleEditFormDisplay(this.props.editEnabled) }}>
+        <div className={`list-group-item ${determinesToDoItemColor(this.props.priority)}`} style={{ display: handleEditFormDisplay(this.props.editEnabled) }}>
           <div className="form-group">
             <label htmlFor="description">Description</label>
-            <textarea className="create-todo-text" name="description" value={this.state.todo} onChange={this.handleChange}></textarea>
+            <textarea className="update-todo-text" name="description" value={this.state.todo} onChange={this.handleChange}></textarea>
           </div>
 
           <div className="form-group">
             <label htmlFor="priority">Priority</label>
-            <select name="priority" className="form-control" value={this.state.priority} onChange={this.handleChange}>
+            <select name="priority" className="form-control update-todo-priority" value={this.state.priority} onChange={this.handleChange}>
               <option value="select" disabled>Select a Priority</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -77,8 +77,8 @@ class ToDoItem extends Component {
             </select>
           </div>
 
-          <button className="btn btn-success" onClick={() => this.props.handleSave(this.state.todo, this.state.priority, this.props.id)}>Save</button>
-        </li >
+          <button className="btn btn-success update-todo" onClick={() => this.props.handleSave(this.state.todo, this.state.priority, this.props.id)}>Save</button>
+        </div >
       </div >
     )
   }
