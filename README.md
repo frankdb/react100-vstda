@@ -1,6 +1,6 @@
 # React 100 VSTDA
 
-This project is a simple React app that . You visit the URL at: 
+This project sets up the front-end for a simple to do app. You can add, delete and edit to do items as well as mark them as complete. You can visit the URL at: https://react100-vstda-19je1wy5c.now.sh
 
 ## Getting Started
 
