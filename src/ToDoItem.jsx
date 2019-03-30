@@ -26,6 +26,14 @@ function handleEditFormDisplay(editEnabled) {
   }
 }
 
+function handleStrikeThrough(completed) {
+  if (completed) {
+    return "line-through";
+  } else {
+    return "none";
+  }
+}
+
 class ToDoItem extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +57,7 @@ class ToDoItem extends Component {
       <div>
         <li className={`list-group-item ${determinesToDoItemColor(this.props.priority)}`} style={{ display: handleToDoDisplay(this.props.editEnabled) }}>
           <input type="checkbox" checked={this.props.completed} onChange={() => this.props.toggleCheckBox(this.props.id)}></input>
-          {this.props.todo}
+          <span style={{ textDecoration: handleStrikeThrough(this.props.completed) }}>{this.props.todo}</span>
 
           <div className="pull-right">
             <a className="edit-todo" style={{ cursor: 'pointer' }} onClick={() => this.props.handleEdit(this.props.id)}>
