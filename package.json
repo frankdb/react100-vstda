@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "build": "npm run less && webpack",
-    "start": "node server/index.js",
+    "start": "npm run build && node server/index.js",
     "less": "lessc src/css/style.less dist/css/style.css",
     "lint": "eslint .",
     "test": "npm run build && mocha test/.setup.js test/*.spec.js --exit"
